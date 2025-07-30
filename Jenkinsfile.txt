@@ -10,13 +10,13 @@ pipeline {
     stages {
         stage('Verificar acceso a GitHub') {
             steps {
-                sh 'git ls-remote https://github.com/jsalazar82/terraform-nodejs-ec2.git'
+                sh 'git ls-remote https://github.com/jsalazar82/web-iac.git'
             }
         }
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/jsalazar82/terraform-nodejs-ec2.git'
+                git 'https://github.com/jsalazar82/web-iac.git'
             }
         }
 
