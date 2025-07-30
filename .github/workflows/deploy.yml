@@ -1,11 +1,13 @@
-name: Terraform Destroy from GitHub Actions
+name: Terraform Deploy to AWS
 
 on:
-  workflow_dispatch:  # Ejecutar manualmente desde GitHub Actions
+  push:
+    branches:
+      - main
 
 jobs:
-  destroy:
-    name: Terraform Destroy
+  deploy:
+    name: Terraform Deployment
     runs-on: ubuntu-latest
 
     env:
@@ -26,6 +28,14 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Destroy
-        run: terraform destroy -auto-approve
+      - name: Terraform Format Check
+        run: terraform fmt -check
 
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: terraform plan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
