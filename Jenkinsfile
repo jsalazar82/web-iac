@@ -16,7 +16,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/jsalazar82/web-iac.git'
+                git branch: 'main', url: 'https://github.com/jsalazar82/web-iac.git'
             }
         }
 
